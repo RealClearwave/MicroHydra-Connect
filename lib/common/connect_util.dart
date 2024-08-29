@@ -168,29 +168,29 @@ class SettingsCfg {
   });
 
   void readJson(Map<String, dynamic> json) {
-    h24Clock = json['24h_clock'];
+    h24Clock = json['24h_clock'].toString();
     wifiSSID = json['wifi_ssid'];
-    bgColor = json['bg_color'];
-    volume = json['volume'];
+    bgColor = json['bg_color'].toString();
+    volume = json['volume'].toString();
     wifiPass = json['wifi_pass'];
-    uiColor = json['ui_color'];
-    uiSound = json['ui_sound'];
-    timezone = json['timezone'];
-    syncClock = json['sync_clock'];
+    uiColor = json['ui_color'].toString();
+    uiSound = json['ui_sound'].toString();
+    timezone = json['timezone'].toString();
+    syncClock = json['sync_clock'].toString();
     language = json['language'];
   }
 
   String toJson() {
     return jsonEncode({
-      "24h_clock": h24Clock,
+      "24h_clock": h24Clock == "true",
       "wifi_ssid": wifiSSID,
-      "bg_color": bgColor,
-      "volume": volume,
+      "bg_color": int.parse(bgColor),
+      "volume": int.parse(volume),
       "wifi_pass": wifiPass,
-      "ui_color": uiColor,
-      "ui_sound": uiSound,
-      "timezone": timezone,
-      "sync_clock": syncClock,
+      "ui_color": int.parse(uiColor),
+      "ui_sound": uiSound == "true",
+      "timezone": int.parse(timezone),
+      "sync_clock": syncClock == "true",
       "language": language,
     });
   }
